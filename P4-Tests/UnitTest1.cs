@@ -343,6 +343,74 @@ namespace PracticaMap4
 
         [TestMethod]
 
+        public void GetItemInfoGeneral()
+        {
+            //Arrange
+            Map mapa = new Map(1, 1);
+            mapa.items[0].name = "Newspapers1";
+            mapa.items[0].description = "News";
+            //Act
+            string resultado;
+            resultado = mapa.GetItemInfo(0);
+
+            //Assert
+            Assert.AreEqual("0: Newspapers1 News", resultado, "La descripción del item no coincide con la esperada");
+
+        }
+
+        [TestMethod]
+
+        public void GetItemInfoNoItem()
+        {
+            //Arrange
+            Map mapa = new Map(1,0);
+            
+            //Act
+            try
+            {
+                string resultado;
+                resultado = mapa.GetItemInfo(0);
+                Assert.Fail("FALLO: No lanza una excepción cuando debería lanzarla");
+            }
+            catch (AssertFailedException) { throw; }
+            catch (Exception) { }
+        }
+
+        public void GetItemsPlaceGeneral() //hay que hacerlo
+        {
+            //Arrange
+            Map mapa = new Map(1, 1);
+            mapa.items[0].name = "Newspapers1";
+            mapa.items[0].description = "News";
+            //Act
+            string resultado;
+            resultado = mapa.GetItemInfo(0);s
+
+            //Assert
+            Assert.AreEqual("0: Newspapers1 News", resultado, "La descripción del item no coincide con la esperada");
+
+        }
+
+        [TestMethod]
+
+        public void GetItemPlaceNoItem() // hay que hacerlo
+        {
+            //Arrange
+            Map mapa = new Map(1, 0);
+
+            //Act
+            try
+            {
+                string resultado;
+                resultado = mapa.GetItemInfo(0);
+                Assert.Fail("FALLO: No lanza una excepción cuando debería lanzarla");
+            }
+            catch (AssertFailedException) { throw; }
+            catch (Exception) { }
+        }
+
+        [TestMethod]
+
         public void isSpaceShipSi() 
         {
             //Arrange

@@ -18,3 +18,10 @@ C:\Users\ignac\Documents\GitHub\FP-MAP\MAP-guille\obj\Debug\MAP-guille.pdb
 C:\Users\ignac\Documents\GitHub\FP-MAP\MAP-guille\bin\Debug\MAP-guille.exe.config
 C:\Users\ignac\Documents\GitHub\FP-MAP\MAP-guille\bin\Debug\MAP-guille.exe
 C:\Users\ignac\Documents\GitHub\FP-MAP\MAP-guille\bin\Debug\MAP-guille.pdb
+D:\Escritorio\Desarrollo de Videojuegos\Fundamentos de Programación\Prácticas\FP-MAP\MAP-guille\bin\Debug\MAP-guille.exe.config
+D:\Escritorio\Desarrollo de Videojuegos\Fundamentos de Programación\Prácticas\FP-MAP\MAP-guille\bin\Debug\MAP-guille.exe
+D:\Escritorio\Desarrollo de Videojuegos\Fundamentos de Programación\Prácticas\FP-MAP\MAP-guille\bin\Debug\MAP-guille.pdb
+D:\Escritorio\Desarrollo de Videojuegos\Fundamentos de Programación\Prácticas\FP-MAP\MAP-guille\obj\Debug\MAP-guille.csprojResolveAssemblyReference.cache
+D:\Escritorio\Desarrollo de Videojuegos\Fundamentos de Programación\Prácticas\FP-MAP\MAP-guille\obj\Debug\MAP-guille.csproj.CoreCompileInputs.cache
+D:\Escritorio\Desarrollo de Videojuegos\Fundamentos de Programación\Prácticas\FP-MAP\MAP-guille\obj\Debug\MAP-guille.exe
+D:\Escritorio\Desarrollo de Videojuegos\Fundamentos de Programación\Prácticas\FP-MAP\MAP-guille\obj\Debug\MAP-guille.pdb

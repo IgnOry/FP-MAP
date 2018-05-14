@@ -176,7 +176,7 @@ namespace WallE
 
 		public string GetItemInfo(int it)
 		{
-			return (it + " " + items[it].name + " " + items[it].description);
+			return (it + ": " + items[it].name + " " + items[it].description);
 		}
 
 		public string GetItemsPlace(int pl)
