@@ -177,8 +177,9 @@ namespace PracticaMap4
         {
             // Arrange
             Lista l = new Lista(3, 2);
+            
             //Act
-            Assert.AreEqual(1, 1);
+
             try
             {
                 int n = l.BuscaItemEnPos(-3);
@@ -218,5 +219,223 @@ namespace PracticaMap4
             Assert.AreEqual(3, cuenta3, "El tecer elemetno e el 3");
 
         }
+
+        [TestMethod]
+
+        public void GetMovesSinConexion()
+        {
+            //Arrange
+            Map mapa = new Map(1, 1);
+            mapa.GeneraConexionesAuxiliar(mapa, 0);
+
+            //Act
+            string resultado;
+            resultado = mapa.GetMoves(0);
+
+            //Assert
+            Assert.AreEqual(" ", resultado, "El lugar no tiene conexiones");
+
+        }
+
+        [TestMethod]
+
+        public void GetMovesVacio()
+        {
+            //Arrange
+            Map mapa = new Map(0, 0);
+           
+            //Act
+            try
+            {
+                string resultado;
+                resultado = mapa.GetMoves(0);
+                Assert.Fail("FALLO: No lanza una excepción cuando debería lanzarla");
+            }
+            catch (AssertFailedException) { throw; }
+            catch (Exception) { }
+            
+        }
+
+        [TestMethod]
+
+        public void GetMovesUnoDeCada() //No va 
+        {
+            //Arrange
+            Map mapa = new Map(1, 1);
+            mapa.GeneraConexionesAuxiliar2(mapa, 0);
+
+            //Act
+            string resultado;
+            resultado = mapa.GetMoves(0);
+
+            //Assert
+            Assert.AreEqual(" ", resultado, "El lugar no tiene conexiones");
+
+        }
+
+        [TestMethod]
+
+        public void GetMovesTodosIguales() //No va
+        {
+            //Arrange
+            Map mapa = new Map(1, 1);
+            mapa.GeneraConexionesAuxiliar3(mapa, 0);
+
+            //Act
+            string resultado;
+            resultado = mapa.GetMoves(0);
+
+            //Assert
+            Assert.AreEqual(" ", resultado, "El lugar no tiene conexiones");
+
+        }
+
+        [TestMethod]
+
+        public void GetNumItemsVacio()
+        {
+            //Arrange
+            Map mapa = new Map(0, 0);
+            
+            //Act
+            try
+            {
+                int resultado;
+                resultado = mapa.GetNumItems(0);
+                Assert.Fail("FALLO: No lanza una excepción cuando debería lanzarla");
+            }
+            catch (AssertFailedException) { throw; }
+            catch (Exception) { }
+
+        }
+
+        [TestMethod]
+
+        public void GetNumItems0() //Por terminar
+        {
+            //Arrange
+            Map mapa = new Map(3, 0);
+         
+            //Act
+            bool resultado = true;
+            for (int i = 0; i < mapa.places.Length; i++)
+                resultado = mapa.isSpaceShip(i);
+
+            //Assert
+            Assert.AreEqual(false, resultado, "Ningun lugar es Spaceship");
+
+        }
+
+        public void GetNumItemsNormal() //Por terminar
+        {
+            //Arrange
+            Map mapa = new Map(3, 1);
+           
+            //Act
+            bool resultado = true;
+            for (int i = 0; i < mapa.places.Length; i++)
+                resultado = mapa.isSpaceShip(i);
+
+            //Assert
+            Assert.AreEqual(false, resultado, "Ningun lugar es Spaceship");
+
+        }
+
+        [TestMethod]
+
+        public void isSpaceShipSi() 
+        {
+            //Arrange
+            Map mapa = new Map(1, 1);
+            mapa.places[0].spaceShip = true;
+
+            //Act
+            bool resultado;
+            resultado = mapa.isSpaceShip(0);
+
+            //Assert
+            Assert.AreEqual(true, resultado, "El lugar es SpaceShip");
+
+        }
+
+        [TestMethod]
+
+        public void isSpaceShipNo() 
+        {
+            //Arrange
+            Map mapa = new Map(1, 1);
+            mapa.places[0].spaceShip = false;
+
+            //Act
+            bool resultado;
+            resultado = mapa.isSpaceShip(0);
+
+            //Assert
+            Assert.AreEqual(false, resultado, "El lugar no es SpaceShip");
+
+        }
+
+        [TestMethod]
+
+        public void isSpaceShipVacio() 
+        {
+            //Arrange
+            Map mapa = new Map(0, 0);
+
+            //Act
+            try
+            {
+                bool resultado;
+                resultado = mapa.isSpaceShip(0);
+                Assert.Fail("FALLO: No lanza una excepción cuando debería lanzarla");
+            }
+            catch (AssertFailedException) { throw; }
+            catch (Exception) { }
+                   
+        }
+
+        [TestMethod]
+
+        public void isSpaceShipVariosSi() 
+        {
+            //Arrange
+            Map mapa = new Map(3, 1);
+            mapa.places[0].spaceShip = false;
+            mapa.places[1].spaceShip = false;
+            mapa.places[2].spaceShip = true;
+
+
+            //Act
+            bool resultado = false;
+            for (int i = 0; i < mapa.places.Length; i++)
+                resultado = mapa.isSpaceShip(i);
+
+            //Assert
+            Assert.AreEqual(true, resultado, "El lugar final es Spaceship");
+
+        }
+
+        [TestMethod]
+
+        public void isSpaceShipVariosNo()
+        {
+            //Arrange
+            Map mapa = new Map(3, 1);
+            mapa.places[0].spaceShip = false;
+            mapa.places[1].spaceShip = false;
+            mapa.places[2].spaceShip = false;
+
+
+            //Act
+            bool resultado = true;
+            for (int i = 0; i < mapa.places.Length; i++)
+                resultado = mapa.isSpaceShip(i);
+
+            //Assert
+            Assert.AreEqual(false, resultado, "Ningun lugar es Spaceship");
+
+        }
+
+        
     }
 }

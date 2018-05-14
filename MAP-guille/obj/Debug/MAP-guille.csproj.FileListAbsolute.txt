@@ -11,3 +11,10 @@ F:\MAP-guille\MAP-guille\obj\Debug\MAP-guille.csprojResolveAssemblyReference.cac
 F:\MAP-guille\MAP-guille\obj\Debug\MAP-guille.csproj.CoreCompileInputs.cache
 F:\MAP-guille\MAP-guille\obj\Debug\MAP-guille.exe
 F:\MAP-guille\MAP-guille\obj\Debug\MAP-guille.pdb
+C:\Users\ignac\Documents\GitHub\FP-MAP\MAP-guille\obj\Debug\MAP-guille.csprojResolveAssemblyReference.cache
+C:\Users\ignac\Documents\GitHub\FP-MAP\MAP-guille\obj\Debug\MAP-guille.csproj.CoreCompileInputs.cache
+C:\Users\ignac\Documents\GitHub\FP-MAP\MAP-guille\obj\Debug\MAP-guille.exe
+C:\Users\ignac\Documents\GitHub\FP-MAP\MAP-guille\obj\Debug\MAP-guille.pdb
+C:\Users\ignac\Documents\GitHub\FP-MAP\MAP-guille\bin\Debug\MAP-guille.exe.config
+C:\Users\ignac\Documents\GitHub\FP-MAP\MAP-guille\bin\Debug\MAP-guille.exe
+C:\Users\ignac\Documents\GitHub\FP-MAP\MAP-guille\bin\Debug\MAP-guille.pdb

@@ -17,3 +17,15 @@ F:\MAP-guille\P4-Tests\bin\Debug\MAP-guille.pdb
 F:\MAP-guille\P4-Tests\bin\Debug\MAP-guille.exe.config
 F:\MAP-guille\P4-Tests\bin\Debug\es\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
 F:\MAP-guille\P4-Tests\obj\Debug\P4-Tests.csproj.CopyComplete
+C:\Users\ignac\Documents\GitHub\FP-MAP\P4-Tests\obj\Debug\P4-Tests.csprojResolveAssemblyReference.cache
+C:\Users\ignac\Documents\GitHub\FP-MAP\P4-Tests\obj\Debug\P4-Tests.csproj.CoreCompileInputs.cache
+C:\Users\ignac\Documents\GitHub\FP-MAP\P4-Tests\obj\Debug\P4-Tests.dll
+C:\Users\ignac\Documents\GitHub\FP-MAP\P4-Tests\obj\Debug\P4-Tests.pdb
+C:\Users\ignac\Documents\GitHub\FP-MAP\P4-Tests\bin\Debug\P4-Tests.dll
+C:\Users\ignac\Documents\GitHub\FP-MAP\P4-Tests\bin\Debug\P4-Tests.pdb
+C:\Users\ignac\Documents\GitHub\FP-MAP\P4-Tests\bin\Debug\MAP-guille.exe
+C:\Users\ignac\Documents\GitHub\FP-MAP\P4-Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\ignac\Documents\GitHub\FP-MAP\P4-Tests\bin\Debug\MAP-guille.pdb
+C:\Users\ignac\Documents\GitHub\FP-MAP\P4-Tests\bin\Debug\MAP-guille.exe.config
+C:\Users\ignac\Documents\GitHub\FP-MAP\P4-Tests\bin\Debug\es\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+C:\Users\ignac\Documents\GitHub\FP-MAP\P4-Tests\obj\Debug\P4-Tests.csproj.CopyComplete

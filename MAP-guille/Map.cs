@@ -9,14 +9,15 @@ namespace WallE
 	// posibles direcciones 
 	public enum Direction { North, South, East, West };
 
-	public class Map
+    #region Tests Map
+    public class Map
 	{ // items basura
-		struct Item
+		public struct Item
 		{
 			public string name, description;
 		}
 		// lugares del mapa 
-		struct Place
+		public struct Place
 		{
 			public string name, description;
 			public bool spaceShip;
@@ -25,14 +26,19 @@ namespace WallE
 									   // -1 si no hay conexion
 			public Listas.Lista itemsInPlace; // lista de enteros, indices al vector de items 
 		}
-		Place[] places; // vector de lugares del mapa 
-		Item[] items; // vector de items del juego 
+		public Place[] places; // vector de lugares del mapa 
+		public Item[] items; // vector de items del juego 
 		int nPlaces, nItems; // numero de lugares y numero de items del mapa
 
 		public Map(int numPlaces, int numItems)
 		{
 			items = new Item[numItems];
 			places = new Place[numPlaces];
+
+            for (int i = 0; i < numPlaces; i++)
+            {
+                places[i].connections = new int[4];
+            }
 		}
 
 		public void ReadMap(string file)
@@ -144,7 +150,7 @@ namespace WallE
 					switch (i)
 					{
 						case (0):
-							devolver = devolver + ("North: " + places[places[pl].connections[i]].name);
+                            devolver = devolver + ("North: " + places[places[pl].connections[i]].name);//places[places[pl].connections[i]].name);
 							break;
 						case (1):
 							devolver = devolver + ("South: " + places[places[pl].connections[i]].name);
@@ -225,10 +231,31 @@ namespace WallE
 			return (places[pl].spaceShip);
 		}
 
-        #region Tests Map
+        public void GeneraConexionesAuxiliar(Map map, int i)
+        {
+            map.places[i].connections[0] = -1;
+            map.places[i].connections[1] = -1;
+            map.places[i].connections[2] = -1;
+            map.places[i].connections[3] = -1;
+        }
 
+        public void GeneraConexionesAuxiliar2 (Map map, int i)
+        {
+            map.places[i].connections[0] = 0;
+            map.places[i].connections[1] = 1;
+            map.places[i].connections[2] = 2;
+            map.places[i].connections[3] = 3;
+        }
 
+        public void GeneraConexionesAuxiliar3(Map map, int i)
+        {
+            map.places[i].connections[0] = 1;
+            map.places[i].connections[1] = 1;
+            map.places[i].connections[2] = 1;
+            map.places[i].connections[3] = 1;
+        }
 
+       
         #endregion
-	}
+    }
 }
