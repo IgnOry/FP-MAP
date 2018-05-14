@@ -1,0 +1,13 @@
+C:\hlocal\MAP-guille\MAP-guille\bin\Debug\MAP-guille.exe.config
+C:\hlocal\MAP-guille\MAP-guille\bin\Debug\MAP-guille.exe
+C:\hlocal\MAP-guille\MAP-guille\bin\Debug\MAP-guille.pdb
+C:\hlocal\MAP-guille\MAP-guille\obj\Debug\MAP-guille.csprojResolveAssemblyReference.cache
+C:\hlocal\MAP-guille\MAP-guille\obj\Debug\MAP-guille.exe
+C:\hlocal\MAP-guille\MAP-guille\obj\Debug\MAP-guille.pdb
+F:\MAP-guille\MAP-guille\bin\Debug\MAP-guille.exe.config
+F:\MAP-guille\MAP-guille\bin\Debug\MAP-guille.exe
+F:\MAP-guille\MAP-guille\bin\Debug\MAP-guille.pdb
+F:\MAP-guille\MAP-guille\obj\Debug\MAP-guille.csprojResolveAssemblyReference.cache
+F:\MAP-guille\MAP-guille\obj\Debug\MAP-guille.csproj.CoreCompileInputs.cache
+F:\MAP-guille\MAP-guille\obj\Debug\MAP-guille.exe
+F:\MAP-guille\MAP-guille\obj\Debug\MAP-guille.pdb
