@@ -85,12 +85,10 @@ namespace WallE
 			places[int.Parse(lectura[1])].description = ReadDescription(entrada);
 
 			places[int.Parse(lectura[1])].itemsInPlace = new Lista();
-
 		}
 
 		public void CreateStreet(string[] lectura)
 		{
-
 			switch (lectura[4])
 			{
 				case "north":
@@ -150,7 +148,7 @@ namespace WallE
 					switch (i)
 					{
 						case (0):
-                            devolver = devolver + ("North: " + places[places[pl].connections[i]].name);//places[places[pl].connections[i]].name);
+                            devolver = devolver + ("North: " + places[places[pl].connections[i]].name);
 							break;
 						case (1):
 							devolver = devolver + ("South: " + places[places[pl].connections[i]].name);
@@ -164,9 +162,7 @@ namespace WallE
 					}
 				}
 			}
-
-			return devolver; //hay que terminar este
-
+			return devolver;
 		}
 
 		public int GetNumItems(int pl)
@@ -203,7 +199,7 @@ namespace WallE
 			places[pl].itemsInPlace.InsertaItem(it);
 		}
 
-		public int Move(int pl, Direction dir)          // en caso de error devuelve -1
+		public int Move(int pl, Direction dir)     
 		{
 			int devolver = -1;
 
@@ -254,8 +250,6 @@ namespace WallE
             map.places[i].connections[2] = 1;
             map.places[i].connections[3] = 1;
         }
-
-       
         #endregion
     }
 }

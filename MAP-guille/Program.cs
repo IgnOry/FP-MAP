@@ -1,4 +1,6 @@
-﻿using System;
+﻿//David Carmona Fauste
+//Ignacio Ory Alonso
+using System;
 using System.IO;
 using Listas;
 using WallE;
@@ -67,15 +69,14 @@ namespace WallE
 
 			WallE w = new WallE();
 		
-			//hay que pasarle dos enteros con el número de lugares e items		¿pasarlo de manera manual?
 			m.ReadMap("madrid.map");
 
 			//StreamReader
-
 			SelectorCarga (w, m); 
 
 			MuestraComandos ();
-			StreamWriter archivo = new StreamWriter ("partida guardada.txt");
+            //StreamWriter
+            StreamWriter archivo = new StreamWriter ("partida guardada.txt");
 
 			while (!quit && !w.atSpaceShip (m))
 			{

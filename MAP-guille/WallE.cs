@@ -11,7 +11,6 @@ namespace WallE
 		public Lista bag;      // lista de items recogidos por wall-e
 						// (son indices a la lista de items del mapa)
 
-
 		public WallE()
 		{
 			pos = 0;
@@ -52,17 +51,11 @@ namespace WallE
 			if (aux == 0)
 				devolver = "Empty bag...";
 			return devolver;
-			// 	IMPORTANTE debe devolver string con los saltos de línea incluidos (\n) para poder escribirlos con comodidad
 		}
-
 
 		public bool atSpaceShip(Map map)
 		{
 			return map.isSpaceShip(pos);
 		}
-
-
 	}
-
-
 }
