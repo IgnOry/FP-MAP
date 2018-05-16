@@ -71,7 +71,7 @@ namespace WallE
 			}
 		}
 
-		private void CreatePlace(string[] lectura, StreamReader entrada)
+		public void CreatePlace(string[] lectura, StreamReader entrada)
 		{
 			places[int.Parse(lectura[1])].name = lectura[2];
 
@@ -88,7 +88,7 @@ namespace WallE
 
 		}
 
-		private void CreateStreet(string[] lectura)
+		public void CreateStreet(string[] lectura)
 		{
 
 			switch (lectura[4])
@@ -108,7 +108,7 @@ namespace WallE
 			}
 		}
 
-		private void CreateItem(string[] lectura)
+		public void CreateItem(string[] lectura)
 		{
 			items[int.Parse(lectura[1])].name = lectura[2];
 			items[int.Parse(lectura[1])].description = lectura[5];

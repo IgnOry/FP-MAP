@@ -848,5 +848,152 @@ namespace PracticaMap4
             catch (Exception) { }
         }
 
+        [TestMethod]
+
+        public void CreatePlaceManual() //
+        {
+            //Arrange
+            Map mapa = new Map(2, 1);
+            mapa.places[0].name = "PlazaMayor";
+            mapa.places[0].spaceShip = false;
+            mapa.places[0].description = "Descripción descripción2";
+
+
+            //Act
+            /*mapa.CreatePlace(new string[] { "place", "0", "PlazaMayor", "noSpaceShip" } );   //PROBLEMA, LE PASAMOS EL STREAMREADER ENTRADA
+
+            //Assert
+            Assert.AreEqual("PlazaMayor", resultado, "Ningun lugar es Spaceship");
+            Assert.AreEqual(false, resultado, "Ningun lugar es Spaceship");*/
+
+        }
+
+        [TestMethod]
+
+        public void CreateStreetNorte()
+        {
+            //Arrange
+            Map mapa = new Map(2, 1);
+            string [] texto = { "street", "0", "place", "0", "north", "place", "3" };
+
+            //Act
+            mapa.CreateStreet(texto);
+
+            //Assert
+            Assert.AreEqual(3, mapa.places[0].connections[0], "La conexión norte del lugar 0 es el 3");
+            
+        }
+
+        [TestMethod]
+
+        public void CreateStreetSur()
+        {
+            //Arrange
+            Map mapa = new Map(1, 1);
+            string[] texto = { "street", "0", "place", "0", "south", "place", "5" };
+
+            //Act
+            mapa.CreateStreet(texto);
+
+            //Assert
+            Assert.AreEqual(0, mapa.places[0].connections[0], "La conexión sur del lugar 0 es el 0");
+
+        }
+
+        [TestMethod]
+
+        public void CreateItemTest()  //no funciona porque usa métodos de las listas
+        {
+            //Arrange
+            Map mapa = new Map(1, 1);
+            string[] texto = { "garbage", "0", "Newpapers1", "place", "0", "\"News\"" };
+
+            //Act
+            mapa.CreateItem(texto);
+
+            //Assert
+
+            // Nombre
+            Assert.AreEqual("Newpapers1", mapa.items[0].name, "Nobre del item erróneo");
+            // Descripción
+            Assert.AreEqual("\"News\"", mapa.items[0].description, "Descripción del item errónea");
+
+        }
+
+        // MÉTODOS DE WALLE - - - - - HAY QUE HACER UNA CONSTRUCTORA DE MAPA (con lugares del 0 al 3)
+
+        [TestMethod]
+
+        public void WallEMove03()  //no funciona porque usa métodos de las listas
+        {
+            //Arrange
+            Map mapa = new Map(1, 1);
+            WallE.WallE w = new WallE.WallE();
+            w.pos = 1;
+
+            //Act
+            w.Move(mapa,Direction.North);
+
+            //Assert
+            Assert.AreEqual(3, w.GetPosition(), "WallE no se ha movido a la posicion 3");
+        }
+
+        [TestMethod]
+
+        public void WallEMove31()  //no funciona porque usa métodos de las listas
+        {
+            //Arrange
+            Map mapa = new Map(1, 1);
+            WallE.WallE w = new WallE.WallE();
+            w.pos = 3;
+
+            //Act
+            w.Move(mapa, Direction.West);
+
+            //Assert
+            Assert.AreEqual(1, w.GetPosition(), "WallE no se ha movido a la posicion 1");
+        }
+
+        [TestMethod]
+
+        public void WallEMove31NoPlace()  
+        {
+            //Arrange
+            Map mapa = new Map(1, 1);
+            WallE.WallE w = new WallE.WallE();
+            w.pos = 3;
+
+            //Act-Assert
+            try
+            {
+                w.Move(mapa, Direction.West);
+                Assert.Fail("FALLO: No lanza una excepción cuando debería lanzarla");
+            }
+            catch (AssertFailedException) { throw; }
+            catch (Exception) { }
+
+        }
+
+        [TestMethod]
+
+        public void PickItemGeneral()
+        {
+            //Arrange
+            Map mapa = new Map(1, 1);
+            WallE.WallE w = new WallE.WallE();
+
+            //Act
+            w.PickItem(mapa, 0);
+            
+            try
+            {
+                w.Move(mapa, Direction.West);
+                Assert.Fail("FALLO: No lanza una excepción cuando debería lanzarla");
+            }
+            catch (AssertFailedException) { throw; }
+            catch (Exception) { }
+
+        }
+
     }
 }

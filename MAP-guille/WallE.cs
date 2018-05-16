@@ -7,7 +7,7 @@ namespace WallE
 {
 	public class WallE
 	{
-		int pos;        // posicion de Wall-e en el mapa
+		public int pos;        // posicion de Wall-e en el mapa  //público para test
 		Lista bag;      // lista de items recogidos por wall-e
 						// (son indices a la lista de items del mapa)
 
