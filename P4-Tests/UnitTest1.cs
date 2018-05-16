@@ -691,27 +691,6 @@ namespace PracticaMap4
 
         [TestMethod]
 
-        public void CreateStreet() //Hay que hacerlos
-        {
-            //Arrange
-            Map mapa = new Map(3, 1);
-            mapa.places[0].spaceShip = false;
-            mapa.places[1].spaceShip = false;
-            mapa.places[2].spaceShip = false;
-
-
-            //Act
-            bool resultado = true;
-            for (int i = 0; i < mapa.places.Length; i++)
-                resultado = mapa.isSpaceShip(i);
-
-            //Assert
-            Assert.AreEqual(false, resultado, "Ningun lugar es Spaceship");
-
-        }
-
-        [TestMethod]
-
         public void CreateItem() //Hay que hacerlos
         {
             //Arrange
@@ -756,100 +735,6 @@ namespace PracticaMap4
 
         [TestMethod]
 
-        public void PickItem() //Hay que hacerlos
-        {
-            //Arrange
-            Map mapa = new Map(3, 1);
-            mapa.places[0].spaceShip = false;
-            mapa.places[1].spaceShip = false;
-            mapa.places[2].spaceShip = false;
-
-
-            //Act
-            bool resultado = true;
-            for (int i = 0; i < mapa.places.Length; i++)
-                resultado = mapa.isSpaceShip(i);
-
-            //Assert
-            Assert.AreEqual(false, resultado, "Ningun lugar es Spaceship");
-
-        }
-
-        [TestMethod]
-
-        public void DropItem() //Hay que hacerlos
-        {
-            //Arrange
-            Map mapa = new Map(3, 1);
-            mapa.places[0].spaceShip = false;
-            mapa.places[1].spaceShip = false;
-            mapa.places[2].spaceShip = false;
-
-
-            //Act
-            bool resultado = true;
-            for (int i = 0; i < mapa.places.Length; i++)
-                resultado = mapa.isSpaceShip(i);
-
-            //Assert
-            Assert.AreEqual(false, resultado, "Ningun lugar es Spaceship");
-
-        }
-
-        [TestMethod]
-
-        public void Bag() //Hay que hacerlos
-        {
-            //Arrange
-            Map mapa = new Map(3, 1);
-            mapa.places[0].spaceShip = false;
-            mapa.places[1].spaceShip = false;
-            mapa.places[2].spaceShip = false;
-
-
-            //Act
-            bool resultado = true;
-            for (int i = 0; i < mapa.places.Length; i++)
-                resultado = mapa.isSpaceShip(i);
-
-            //Assert
-            Assert.AreEqual(false, resultado, "Ningun lugar es Spaceship");
-
-        }
-
-        [TestMethod]
-
-        public void atSpaceShip()
-        {
-            //Arrange
-            WallE.WallE w = new WallE.WallE();
-            Map mapa = new Map(1, 1);
-            mapa.places[0].spaceShip = true;
-
-            //Assert
-            Assert.AreEqual(true, w.atSpaceShip(mapa), "Está en Spaceship");
-
-        }
-
-        [TestMethod]
-
-        public void atSpaceShipNoPlace()
-        {
-            //Arrange
-            WallE.WallE w = new WallE.WallE();
-            Map mapa = new Map(0, 1);
-
-            try
-            {
-                mapa.places[0].spaceShip = true;
-                Assert.Fail("FALLO: No lanza una excepción cuando debería lanzarla");
-            }
-            catch (AssertFailedException) { throw; }
-            catch (Exception) { }
-        }
-
-        [TestMethod]
-
         public void CreatePlaceManual() //
         {
             //Arrange
@@ -860,11 +745,11 @@ namespace PracticaMap4
 
 
             //Act
-            /*mapa.CreatePlace(new string[] { "place", "0", "PlazaMayor", "noSpaceShip" } );   //PROBLEMA, LE PASAMOS EL STREAMREADER ENTRADA
+            //mapa.CreatePlace(new string[] { "place", "0", "PlazaMayor", "noSpaceShip" } );   //PROBLEMA, LE PASAMOS EL STREAMREADER ENTRADA
 
             //Assert
-            Assert.AreEqual("PlazaMayor", resultado, "Ningun lugar es Spaceship");
-            Assert.AreEqual(false, resultado, "Ningun lugar es Spaceship");*/
+            //Assert.AreEqual("PlazaMayor", resultado, "Ningun lugar es Spaceship");
+            //Assert.AreEqual(false, resultado, "Ningun lugar es Spaceship");
 
         }
 
@@ -924,18 +809,19 @@ namespace PracticaMap4
 
         [TestMethod]
 
-        public void WallEMove03()  //no funciona porque usa métodos de las listas
+        public void WallEMove10()  //no funciona porque usa métodos de las listas
         {
             //Arrange
-            Map mapa = new Map(1, 1);
+            Map mapa = new Map(2, 1);
             WallE.WallE w = new WallE.WallE();
             w.pos = 1;
+            mapa.GeneraConexionesAuxiliar2(mapa, 0);
 
             //Act
             w.Move(mapa,Direction.North);
 
             //Assert
-            Assert.AreEqual(3, w.GetPosition(), "WallE no se ha movido a la posicion 3");
+            Assert.AreEqual(0, w.GetPosition(), "WallE no se ha movido a la posicion 3");
         }
 
         [TestMethod]
@@ -943,15 +829,17 @@ namespace PracticaMap4
         public void WallEMove31()  //no funciona porque usa métodos de las listas
         {
             //Arrange
-            Map mapa = new Map(1, 1);
+            Map mapa = new Map(4, 1);
             WallE.WallE w = new WallE.WallE();
             w.pos = 3;
+            mapa.GeneraConexionesAuxiliar2(mapa, 2);
+
 
             //Act
             w.Move(mapa, Direction.West);
 
             //Assert
-            Assert.AreEqual(1, w.GetPosition(), "WallE no se ha movido a la posicion 1");
+            Assert.AreEqual(0, w.GetPosition(), "WallE no se ha movido a la posicion 1");
         }
 
         [TestMethod]
@@ -983,17 +871,131 @@ namespace PracticaMap4
             WallE.WallE w = new WallE.WallE();
 
             //Act
+            mapa.places[0].itemsInPlace = new Lista();
+            mapa.places[0].itemsInPlace.InsertaItem(0);
             w.PickItem(mapa, 0);
-            
+            int resultado = w.bag.ItemsLista();
+
+            //Assert
+            Assert.AreEqual(1, resultado, "Hay 1 objeto en Bag");
+        }
+
+        [TestMethod]
+
+        public void PickItemNoItem()
+        {
+            //Arrange
+            Map mapa = new Map(1, 0);
+            WallE.WallE w = new WallE.WallE();
+            w.bag = new Lista();
+
+            //Act-Assert
             try
             {
-                w.Move(mapa, Direction.West);
+                w.PickItem(mapa, 0);
+                w.bag.ItemsLista();
                 Assert.Fail("FALLO: No lanza una excepción cuando debería lanzarla");
             }
             catch (AssertFailedException) { throw; }
             catch (Exception) { }
+                      
+        }
+
+        [TestMethod]
+
+        public void DropItemGeneral()
+        {
+            //Arrange
+            Map mapa = new Map(1, 1);
+            WallE.WallE w = new WallE.WallE();
+
+            //Act
+            mapa.places[0].itemsInPlace = new Lista();
+            mapa.places[0].itemsInPlace.InsertaItem(0);
+            w.PickItem(mapa, 0);
+            int resultado = w.bag.ItemsLista();
+
+            //Assert
+            Assert.AreEqual(1, resultado, "Hay 1 objeto en Bag");
+        }
+
+        [TestMethod]
+
+        public void DropItemNoItem()
+        {
+            //Arrange
+            Map mapa = new Map(1, 1);
+            WallE.WallE w = new WallE.WallE();
+
+            //Act
+            w.bag.InsertaItem(0);
+            mapa.places[0].itemsInPlace = new Lista();
+            w.DropItem(mapa, 0);
+            int resultado = mapa.places[0].itemsInPlace.ItemsLista();
+
+            //Assert
+            Assert.AreEqual(1, resultado, "Hay 1 objeto en el mapa");
+        }
+
+        [TestMethod]
+
+        public void BagVacia()
+        {
+            //Arrange
+            Map mapa = new Map(1, 1);
+            WallE.WallE w = new WallE.WallE();
+
+            //Act
+            string resultado = w.Bag(mapa);
+
+            //Assert
+            Assert.AreEqual("Empty bag...", resultado, "No hay objeto en Bag");
+        }
+
+        [TestMethod]
+
+        public void Bag() //Hay que hacerlo
+        {
+            //Arrange
+            Map mapa = new Map(1, 1);
+            WallE.WallE w = new WallE.WallE();
+
+            //Act
+            string resultado = w.Bag(mapa);
+
+            //Assert
+            Assert.AreEqual("Empty bag...", resultado, "No hay objeto en Bag");
+        }
+
+        [TestMethod]
+
+        public void atSpaceShip()
+        {
+            //Arrange
+            WallE.WallE w = new WallE.WallE();
+            Map mapa = new Map(1, 1);
+            mapa.places[0].spaceShip = true;
+
+            //Assert
+            Assert.AreEqual(true, w.atSpaceShip(mapa), "Está en Spaceship");
 
         }
 
+        [TestMethod]
+
+        public void atSpaceShipNoPlace()
+        {
+            //Arrange
+            WallE.WallE w = new WallE.WallE();
+            Map mapa = new Map(0, 1);
+
+            try
+            {
+                mapa.places[0].spaceShip = true;
+                Assert.Fail("FALLO: No lanza una excepción cuando debería lanzarla");
+            }
+            catch (AssertFailedException) { throw; }
+            catch (Exception) { }
+        }
     }
 }
