@@ -203,7 +203,7 @@ namespace WallE
 			places[pl].itemsInPlace.InsertaItem(it);
 		}
 
-		public int Move(int pl, Direction dir)          // en caso de error devuelve -1?
+		public int Move(int pl, Direction dir)          // en caso de error devuelve -1
 		{
 			int devolver = -1;
 
