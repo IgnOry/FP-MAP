@@ -9,7 +9,7 @@ namespace WallE
 	{
 		public int pos;        // posicion de Wall-e en el mapa  //público para test
 		public Lista bag;      // lista de items recogidos por wall-e
-						// (son indices a la lista de items del mapa)
+						       // (son indices a la lista de items del mapa)
 
 		public WallE()
 		{
@@ -17,26 +17,39 @@ namespace WallE
 			bag = new Lista();
 		}
 
-		public int GetPosition()
+		public int GetPosition() 
 		{
 			return pos;
 		}
 
-		public void Move(Map m, Direction dir)
+        public void Move(Map m, Direction dir) //Existe direccion
 		{
-			pos = m.Move(pos, dir);
+            if (m.places[pos].connections[(int)dir] != -1)
+			    pos = m.Move(pos, dir);
+            else
+                throw new Exception("No existe esa conexión");
 		}
 
-		public void PickItem(Map m, int it)
+		public void PickItem(Map m, int it) //Si existe item
 		{
-			bag.InsertaItem2(it);
-			m.PickItemPlace(pos, it);
+            if (m.places[pos].itemsInPlace.BuscaItem(it))
+            {
+                bag.InsertaItem2(it);
+                m.PickItemPlace(pos, it);
+            }
+            else
+                throw new Exception("El objeto no está en este lugar");
 		}
 
-		public void DropItem(Map m, int it)
+        public void DropItem(Map m, int it) //Si existe item
 		{
-			m.DropItemPlace(pos, it);
-			bag.EliminaItem(it);
+            if (bag.BuscaItem(it))
+            {
+                m.DropItemPlace(pos, it);
+                bag.EliminaItem(it);
+            }
+            else
+                throw new Exception("El objeto no está en la mochila");
 		}
 
 		public string Bag(Map m)

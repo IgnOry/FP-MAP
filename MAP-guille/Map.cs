@@ -35,6 +35,9 @@ namespace WallE
 			items = new Item[numItems];
 			places = new Place[numPlaces];
 
+            nPlaces = numPlaces;
+            nItems = numItems;
+
             for (int i = 0; i < numPlaces; i++)
             {
                 places[i].connections = new int[4];
@@ -93,15 +96,22 @@ namespace WallE
 			{
 				case "north":
 					places[int.Parse(lectura[3])].connections[0] = int.Parse(lectura[6]);
+					places[int.Parse(lectura[6])].connections[1] = int.Parse(lectura[3]);
 					break;
 				case "south":
 					places[int.Parse(lectura[3])].connections[1] = int.Parse(lectura[6]);
+					places[int.Parse(lectura[6])].connections[0] = int.Parse(lectura[3]);
+
 					break;
 				case "east":
 					places[int.Parse(lectura[3])].connections[2] = int.Parse(lectura[6]);
+					places[int.Parse(lectura[6])].connections[3] = int.Parse(lectura[3]);
+
 					break;
 				case "west":
 					places[int.Parse(lectura[3])].connections[3] = int.Parse(lectura[6]);
+					places[int.Parse(lectura[6])].connections[2] = int.Parse(lectura[3]);
+
 					break;
 			}
 		}

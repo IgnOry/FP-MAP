@@ -1,10 +1,17 @@
-﻿<Properties StartupConfiguration="{CA701194-D195-458D-8220-1A332CF2A020}|Default">
+﻿<Properties StartupConfiguration="{CA701194-D195-458D-8220-1A332CF2A020}|Default" StartupItem="MAP-guille\MAP-guille.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.MAP-guille PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="MAP-guille\Map.cs">
+    <Files>
+      <File FileName="MAP-guille\Map.cs" Line="77" Column="4" />
+      <File FileName="MAP-guille\Program.cs" Line="1" Column="1" />
+      <File FileName="MAP-guille\WallE.cs" Line="1" Column="1" />
+      <File FileName="MAP-guille\Listas.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.MAP-guille PreferredExecutionTarget="MonoDevelop.Default" />
 </Properties>
