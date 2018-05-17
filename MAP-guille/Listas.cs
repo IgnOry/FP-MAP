@@ -131,23 +131,19 @@ namespace Listas
             Nodo aux = pri;
 
             //si hay sólo 1 elemento
-            if (aux.sig == null)
-                pri = null;
-
-            if (aux.sig != null)
+            if (aux.sig == null || nItem == 0)
+                pri = aux.sig;
+           
+            else
             {
-                Nodo copia = aux;
-                int total = ItemsLista();
-                int i = 0;
-                while (i < total && i < nItem)
-                {
-                    copia = aux;
-                    aux = aux.sig;
-                    i++;
-                }
+                Nodo copia = aux.sig;
 
-                if (i == nItem)
-                    copia.sig = aux.sig;
+                for (int i = 1; i < nItem; i++)
+                {
+                    aux = aux.sig;
+                    copia = copia.sig;
+                }
+                aux.sig = copia.sig;
             }
 
         }
