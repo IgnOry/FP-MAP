@@ -141,14 +141,14 @@ namespace Listas
 				}
 			}
 
-            if (i == 0)
+            if (i == 0)                                     //si es el primer item el borrado, pri se lleva al siguiente
                 pri = copia.sig;
 
-            else //if (aux.sig != null)
+            else if (aux.sig != null)                       //si no es el último
                 aux.sig = copia.sig;
 
-            //else
-                //aux.sig = null;
+            else
+                aux.sig = null;
 		}
 
 		public void InsertaItem2(int nItem) //inserta al principio
