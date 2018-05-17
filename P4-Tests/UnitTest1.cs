@@ -320,30 +320,33 @@ namespace PracticaMap4
         public void GetNumItems0() //Por terminar
         {
             //Arrange
-            Map mapa = new Map(3, 0);
+            Map mapa = new Map(1, 0);
+            mapa.places[0].itemsInPlace = new Lista();
          
             //Act
-            bool resultado = true;
-            for (int i = 0; i < mapa.places.Length; i++)
-                resultado = mapa.isSpaceShip(i);
+            int resultado;
+            resultado = mapa.places[0].itemsInPlace.ItemsLista();
+
 
             //Assert
-            Assert.AreEqual(false, resultado, "Ningun lugar es Spaceship");
+            Assert.AreEqual(0, resultado, "No hay objetos en el lugar");
 
         }
 
         public void GetNumItemsNormal() //Por terminar
         {
             //Arrange
-            Map mapa = new Map(3, 1);
-           
+            Map mapa = new Map(1, 1);
+            mapa.places[0].itemsInPlace = new Lista();
+            mapa.places[0].itemsInPlace.InsertaItem(1);
+
             //Act
-            bool resultado = true;
-            for (int i = 0; i < mapa.places.Length; i++)
-                resultado = mapa.isSpaceShip(i);
+            int resultado;
+            resultado = mapa.places[0].itemsInPlace.ItemsLista();
+
 
             //Assert
-            Assert.AreEqual(false, resultado, "Ningun lugar es Spaceship");
+            Assert.AreEqual(1, resultado, "Hay 1 objeto en el lugar");
 
         }
 
@@ -565,7 +568,7 @@ namespace PracticaMap4
         [TestMethod]
 
 
-        public void MoveSinSalida() //Lo mismo con el array
+        public void MoveSinSalida() 
         {
             //Arrange
             Map mapa = new Map(1, 1);
@@ -683,7 +686,7 @@ namespace PracticaMap4
 
         [TestMethod]
 
-        public void CreatePlace() //Hay que hacerlos
+        public void CreatePlace() 
         {
             //Arrange
             Map mapa = new Map(2, 1);
@@ -785,7 +788,8 @@ namespace PracticaMap4
 
             //Assert
             Assert.AreEqual(3, mapa.places[0].connections[0], "La conexión norte del lugar 0 es el 3");
-            
+            Assert.AreEqual(0, mapa.places[3].connections[1], "La conexión sur del lugar 3 es el 0");
+
         }
 
         [TestMethod]
@@ -800,7 +804,42 @@ namespace PracticaMap4
             mapa.CreateStreet(texto);
 
             //Assert
-            Assert.AreEqual(0, mapa.places[0].connections[0], "La conexión sur del lugar 0 es el 0");
+            Assert.AreEqual(5, mapa.places[0].connections[1], "La conexión sur del lugar 0 es el 5");
+            Assert.AreEqual(0, mapa.places[5].connections[0], "La conexión sur del lugar 3 es el 0");
+
+        }
+
+        [TestMethod]
+
+        public void CreateStreetEste()
+        {
+            //Arrange
+            Map mapa = new Map(6, 1);
+            string[] texto = { "street", "0", "place", "0", "east", "place", "5" };
+
+            //Act
+            mapa.CreateStreet(texto);
+
+            //Assert
+            Assert.AreEqual(5, mapa.places[0].connections[2], "La conexión este del lugar 0 es el 5");
+            Assert.AreEqual(0, mapa.places[5].connections[3], "La conexión este del lugar 0 es el 5");
+
+        }
+
+        [TestMethod]
+
+        public void CreateStreetOeste()
+        {
+            //Arrange
+            Map mapa = new Map(6, 1);
+            string[] texto = { "street", "0", "place", "0", "west", "place", "5" };
+
+            //Act
+            mapa.CreateStreet(texto);
+
+            //Assert
+            Assert.AreEqual(5, mapa.places[0].connections[3], "La conexión oeste del lugar 0 es el 5");
+            Assert.AreEqual(0, mapa.places[5].connections[2], "La conexión oeste del lugar 0 es el 5");
 
         }
 

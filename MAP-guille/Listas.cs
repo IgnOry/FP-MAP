@@ -141,11 +141,14 @@ namespace Listas
 				}
 			}
 
-			if (i == 0)
-				pri = copia.sig;
+            if (i == 0)
+                pri = copia.sig;
 
-			else
-				aux.sig = copia.sig;
+            else //if (aux.sig != null)
+                aux.sig = copia.sig;
+
+            //else
+                //aux.sig = null;
 		}
 
 		public void InsertaItem2(int nItem) //inserta al principio

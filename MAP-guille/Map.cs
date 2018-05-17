@@ -201,7 +201,12 @@ namespace WallE
 
 		public void PickItemPlace(int pl, int it)
 		{
-			places[pl].itemsInPlace.EliminaItem(it); //a este se le llama luego desde otro metodo
+            //try
+            //{
+                places[pl].itemsInPlace.EliminaItem(it); //a este se le llama luego desde otro metodo
+            //}
+           // catch
+            //{ throw new Exception("El objeto no está en este lugar"); }
 		}
 
 		public void DropItemPlace(int pl, int it)
