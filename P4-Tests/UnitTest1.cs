@@ -698,26 +698,77 @@ namespace PracticaMap4
 
         }
 
-        //Tests Walle
-
         [TestMethod]
-
-        public void Move() //Hay que hacerlos
+        public void MoveOeste()
         {
             //Arrange
-            Map mapa = new Map(3, 1);
-            mapa.places[0].spaceShip = false;
-            mapa.places[1].spaceShip = false;
-            mapa.places[2].spaceShip = false;
-
+            Map mapa = new Map(2, 1);
+            mapa.GeneraConexionesAuxiliar2(mapa, 0);
 
             //Act
-            bool resultado = true;
-            for (int i = 0; i < mapa.places.Length; i++)
-                resultado = mapa.isSpaceShip(i);
+            int resultado = mapa.Move(0, Direction.West);
 
             //Assert
-            Assert.AreEqual(false, resultado, "Ningun lugar es Spaceship");
+            Assert.AreEqual(3, resultado, "No hay conexiones");
+
+        }
+
+        [TestMethod]
+        public void MoveEste()
+        {
+            //Arrange
+            Map mapa = new Map(2, 1);
+            mapa.GeneraConexionesAuxiliar2(mapa, 0);
+
+            //Act
+            int resultado = mapa.Move(0, Direction.East);
+
+            //Assert
+            Assert.AreEqual(2, resultado, "No hay conexiones");
+
+        }
+
+        [TestMethod]
+        public void MoveSur()
+        {
+            //Arrange
+            Map mapa = new Map(2, 1);
+            mapa.GeneraConexionesAuxiliar2(mapa, 0);
+
+            //Act
+            int resultado = mapa.Move(0, Direction.South);
+
+            //Assert
+            Assert.AreEqual(1, resultado, "No hay conexiones");
+
+        }
+
+        [TestMethod]
+        public void MoveNorte()
+        {
+            //Arrange
+            Map mapa = new Map(2, 1);
+            mapa.GeneraConexionesAuxiliar2(mapa, 0);
+
+            //Act
+            int resultado = mapa.Move(0, Direction.North);
+
+            //Assert
+            Assert.AreEqual(0, resultado, "No hay conexiones");
+
+        }
+
+        public void MoveSinconexiones()
+        {
+            //Arrange
+            Map mapa = new Map(1, 1);
+            mapa.GeneraConexionesAuxiliar(mapa, 0);
+
+            //Act
+            int resultado = mapa.Move(0, Direction.North);
+
+            //Assert
+            Assert.AreEqual(-1, resultado, "No hay conexiones");
 
         }
 
@@ -726,7 +777,7 @@ namespace PracticaMap4
         public void CreateStreetNorte()
         {
             //Arrange
-            Map mapa = new Map(2, 1);
+            Map mapa = new Map(4, 1);
             string [] texto = { "street", "0", "place", "0", "north", "place", "3" };
 
             //Act
@@ -742,7 +793,7 @@ namespace PracticaMap4
         public void CreateStreetSur()
         {
             //Arrange
-            Map mapa = new Map(1, 1);
+            Map mapa = new Map(6, 1);
             string[] texto = { "street", "0", "place", "0", "south", "place", "5" };
 
             //Act
@@ -777,6 +828,10 @@ namespace PracticaMap4
 
         [TestMethod]
 
+
+        // - - - - - - Tests WallE - - - - - - -
+
+
         public void WallEMove10()  
         {
             //Arrange
@@ -791,6 +846,26 @@ namespace PracticaMap4
             //Assert
             Assert.AreEqual(0, w.GetPosition(), "WallE no se ha movido a la posicion 3");
         }
+        [TestMethod]
+
+        public void WallEMoveNoInterseccion()
+        {
+            //Arrange
+            Map mapa = new Map(2, 1);
+            WallE.WallE w = new WallE.WallE();
+            mapa.GeneraConexionesAuxiliar(mapa, 0);
+
+            //Act
+            try
+            {
+                w.Move(mapa, Direction.North);
+                Assert.Fail("FALLO: No lanza una excepción cuando debería lanzarla");
+            }
+            catch (AssertFailedException) { throw; }
+            catch (Exception) { }
+        }
+        
+
 
         [TestMethod]
 
@@ -892,17 +967,17 @@ namespace PracticaMap4
         public void DropItemNoItem()
         {
             //Arrange
-            Map mapa = new Map(1, 1);
+            Map mapa = new Map(1,0);
             WallE.WallE w = new WallE.WallE();
-
-            //Act
-            w.bag.InsertaItem(0);
-            mapa.places[0].itemsInPlace = new Lista();
-            w.DropItem(mapa, 0);
-            int resultado = mapa.places[0].itemsInPlace.ItemsLista();
-
-            //Assert
-            Assert.AreEqual(1, resultado, "Hay 1 objeto en el mapa");
+            
+            //Act-Assert
+            try
+            {
+                w.DropItem(mapa, 0);
+                Assert.Fail("FALLO: No lanza una excepción cuando debería lanzarla");
+            }
+            catch (AssertFailedException) { throw; }
+            catch (Exception) { }
         }
 
         [TestMethod]
