@@ -40,3 +40,10 @@ D:\Escritorio\Desarrollo de Videojuegos\Fundamentos de Programación\Prácticas\
 D:\Escritorio\Desarrollo de Videojuegos\Fundamentos de Programación\Prácticas\FP-MAP\P4-Tests\obj\Debug\P4-Tests.csproj.CoreCompileInputs.cache
 D:\Escritorio\Desarrollo de Videojuegos\Fundamentos de Programación\Prácticas\FP-MAP\P4-Tests\obj\Debug\P4-Tests.dll
 D:\Escritorio\Desarrollo de Videojuegos\Fundamentos de Programación\Prácticas\FP-MAP\P4-Tests\obj\Debug\P4-Tests.pdb
+C:\hlocal\FP-MAP\P4-Tests\bin\Debug\P4-Tests.dll
+C:\hlocal\FP-MAP\P4-Tests\bin\Debug\P4-Tests.pdb
+C:\hlocal\FP-MAP\P4-Tests\bin\Debug\MAP-guille.exe
+C:\hlocal\FP-MAP\P4-Tests\bin\Debug\MAP-guille.pdb
+C:\hlocal\FP-MAP\P4-Tests\obj\Debug\P4-Tests.csprojResolveAssemblyReference.cache
+C:\hlocal\FP-MAP\P4-Tests\obj\Debug\P4-Tests.dll
+C:\hlocal\FP-MAP\P4-Tests\obj\Debug\P4-Tests.pdb

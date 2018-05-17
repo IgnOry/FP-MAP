@@ -227,7 +227,7 @@ namespace WallE
 			return (places[pl].spaceShip);
 		}
 
-        public void GeneraConexionesAuxiliar(Map map, int i)
+        public void GeneraConexionesAuxiliar(Map map, int i) //Para MAP
         {
             map.places[i].connections[0] = -1;
             map.places[i].connections[1] = -1;
@@ -235,7 +235,7 @@ namespace WallE
             map.places[i].connections[3] = -1;
         }
 
-        public void GeneraConexionesAuxiliar2 (Map map, int i)
+        public void GeneraConexionesAuxiliar2 (Map map, int i) //Para MAP
         {
             map.places[i].connections[0] = 0;
             map.places[i].connections[1] = 1;
@@ -243,12 +243,28 @@ namespace WallE
             map.places[i].connections[3] = 3;
         }
 
-        public void GeneraConexionesAuxiliar3(Map map, int i)
+        public void GeneraConexionesAuxiliar3(Map map, int i) //Para MAP
         {
             map.places[i].connections[0] = 1;
             map.places[i].connections[1] = 1;
             map.places[i].connections[2] = 1;
             map.places[i].connections[3] = 1;
+        }
+
+
+
+        public void CreatePlaceManual (string[] lectura) //Para MAP
+        {
+            places[int.Parse(lectura[1])].name = lectura[2];
+
+            if (lectura[3] == "noSpaceShip")
+                places[int.Parse(lectura[1])].spaceShip = false;
+            else
+                places[int.Parse(lectura[1])].spaceShip = true;
+
+            places[int.Parse(lectura[1])].connections = new int[] { -1, -1, -1, -1 };
+
+            places[int.Parse(lectura[1])].itemsInPlace = new Lista();
         }
         #endregion
     }

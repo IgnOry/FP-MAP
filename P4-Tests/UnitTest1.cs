@@ -1,6 +1,7 @@
 ﻿using System;
 using Listas;
 using WallE;
+using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace PracticaMap4
@@ -258,35 +259,40 @@ namespace PracticaMap4
 
         [TestMethod]
 
-        public void GetMovesUnoDeCada() //No va 
+        public void GetMovesUnoDeCada() 
         {
             //Arrange
-            Map mapa = new Map(1, 1);
+            Map mapa = new Map(4, 1);
             mapa.GeneraConexionesAuxiliar2(mapa, 0);
+            mapa.places[0].name = "Casa ";
+            mapa.places[1].name = "Palacio ";
+            mapa.places[2].name = "Mansion ";
+            mapa.places[3].name = "Chabola ";
 
             //Act
             string resultado;
             resultado = mapa.GetMoves(0);
 
             //Assert
-            Assert.AreEqual(" ", resultado, "El lugar no tiene conexiones");
+            Assert.AreEqual(" North: Casa South: Palacio East: Mansion West: Chabola ", resultado, "El lugar no tiene conexiones");
 
         }
 
         [TestMethod]
 
-        public void GetMovesTodosIguales() //No va
+        public void GetMovesTodosIguales() 
         {
             //Arrange
-            Map mapa = new Map(1, 1);
+            Map mapa = new Map(2, 1);
             mapa.GeneraConexionesAuxiliar3(mapa, 0);
+            mapa.places[0].name = "Centro ";
 
             //Act
             string resultado;
-            resultado = mapa.GetMoves(0);
+            resultado = mapa.GetMoves(1);
 
             //Assert
-            Assert.AreEqual(" ", resultado, "El lugar no tiene conexiones");
+            Assert.AreEqual(" North: Centro South: Centro East: Centro West: Centro ", resultado, "El lugar no tiene conexiones");
 
         }
 
@@ -517,7 +523,7 @@ namespace PracticaMap4
 
         [TestMethod]
 
-        public void MoveGeneral() //No se como poner el assert para que pille los valores del array
+        public void MoveGeneral() 
         {
             //Arrange
             Map mapa = new Map(2, 1);
@@ -532,7 +538,11 @@ namespace PracticaMap4
             resultados[3] = mapa.Move(0, Direction.East);
 
             //Assert
-            Assert.AreEqual(1, resultados, "Las direcciones no corresponden");
+            Assert.AreEqual(0, resultados[0], "Las direcciones no corresponden");
+            Assert.AreEqual(3, resultados[1], "Las direcciones no corresponden");
+            Assert.AreEqual(1, resultados[2], "Las direcciones no corresponden");
+            Assert.AreEqual(2, resultados[3], "Las direcciones no corresponden");
+
         }
 
         [TestMethod]
@@ -570,7 +580,10 @@ namespace PracticaMap4
             resultados[3] = mapa.Move(0, Direction.East);
 
             //Assert
-            Assert.AreEqual(1, resultados, "Las direcciones no corresponden");
+            Assert.AreEqual(-1, resultados[0], "Las direcciones no corresponden");
+            Assert.AreEqual(-1, resultados[1], "Las direcciones no corresponden");
+            Assert.AreEqual(-1, resultados[2], "Las direcciones no corresponden");
+            Assert.AreEqual(-1, resultados[3], "Las direcciones no corresponden");
         }
 
         [TestMethod]
@@ -673,40 +686,15 @@ namespace PracticaMap4
         public void CreatePlace() //Hay que hacerlos
         {
             //Arrange
-            Map mapa = new Map(3, 1);
-            mapa.places[0].spaceShip = false;
-            mapa.places[1].spaceShip = false;
-            mapa.places[2].spaceShip = false;
+            Map mapa = new Map(2, 1);
+            string[] lectura = { "place", "1", "PlazaMayor", "noSpaceShip" };
 
 
             //Act
-            bool resultado = true;
-            for (int i = 0; i < mapa.places.Length; i++)
-                resultado = mapa.isSpaceShip(i);
+            mapa.CreatePlaceManual(lectura);
 
             //Assert
-            Assert.AreEqual(false, resultado, "Ningun lugar es Spaceship");
-
-        }
-
-        [TestMethod]
-
-        public void CreateItem() //Hay que hacerlos
-        {
-            //Arrange
-            Map mapa = new Map(3, 1);
-            mapa.places[0].spaceShip = false;
-            mapa.places[1].spaceShip = false;
-            mapa.places[2].spaceShip = false;
-
-
-            //Act
-            bool resultado = true;
-            for (int i = 0; i < mapa.places.Length; i++)
-                resultado = mapa.isSpaceShip(i);
-
-            //Assert
-            Assert.AreEqual(false, resultado, "Ningun lugar es Spaceship");
+            Assert.AreEqual("PlazaMayor", mapa.places[1].name, "El lugar es PlazaMayor");
 
         }
 
@@ -730,26 +718,6 @@ namespace PracticaMap4
 
             //Assert
             Assert.AreEqual(false, resultado, "Ningun lugar es Spaceship");
-
-        }
-
-        [TestMethod]
-
-        public void CreatePlaceManual() //
-        {
-            //Arrange
-            Map mapa = new Map(2, 1);
-            mapa.places[0].name = "PlazaMayor";
-            mapa.places[0].spaceShip = false;
-            mapa.places[0].description = "Descripción descripción2";
-
-
-            //Act
-            //mapa.CreatePlace(new string[] { "place", "0", "PlazaMayor", "noSpaceShip" } );   //PROBLEMA, LE PASAMOS EL STREAMREADER ENTRADA
-
-            //Assert
-            //Assert.AreEqual("PlazaMayor", resultado, "Ningun lugar es Spaceship");
-            //Assert.AreEqual(false, resultado, "Ningun lugar es Spaceship");
 
         }
 
@@ -787,11 +755,12 @@ namespace PracticaMap4
 
         [TestMethod]
 
-        public void CreateItemTest()  //no funciona porque usa métodos de las listas
+        public void CreateItemTest()  
         {
             //Arrange
             Map mapa = new Map(1, 1);
             string[] texto = { "garbage", "0", "Newpapers1", "place", "0", "\"News\"" };
+            mapa.places[0].itemsInPlace = new Lista();
 
             //Act
             mapa.CreateItem(texto);
@@ -805,11 +774,10 @@ namespace PracticaMap4
 
         }
 
-        // MÉTODOS DE WALLE - - - - - HAY QUE HACER UNA CONSTRUCTORA DE MAPA (con lugares del 0 al 3)
 
         [TestMethod]
 
-        public void WallEMove10()  //no funciona porque usa métodos de las listas
+        public void WallEMove10()  
         {
             //Arrange
             Map mapa = new Map(2, 1);
@@ -826,7 +794,7 @@ namespace PracticaMap4
 
         [TestMethod]
 
-        public void WallEMove31()  //no funciona porque usa métodos de las listas
+        public void WallEMove31()  
         {
             //Arrange
             Map mapa = new Map(4, 1);
@@ -954,17 +922,21 @@ namespace PracticaMap4
 
         [TestMethod]
 
-        public void Bag() //Hay que hacerlo
+        public void Bag() 
         {
             //Arrange
             Map mapa = new Map(1, 1);
             WallE.WallE w = new WallE.WallE();
+            string[] texto = { "garbage", "0", "Newspapers1", "place", "0", "\"News\"" };
+            mapa.places[0].itemsInPlace = new Lista();
+            mapa.CreateItem(texto);
+            w.PickItem(mapa, 0);
 
             //Act
             string resultado = w.Bag(mapa);
 
             //Assert
-            Assert.AreEqual("Empty bag...", resultado, "No hay objeto en Bag");
+            Assert.AreEqual("0: Newspapers1 \"News\"\n", resultado, "No hay objeto en Bag");
         }
 
         [TestMethod]

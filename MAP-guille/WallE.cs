@@ -44,7 +44,7 @@ namespace WallE
 			string devolver = "";
 			int totalItems = bag.ItemsLista();
 			int aux;
-			for (aux = 0; aux < totalItems - 1; aux++)
+			for (aux = 0; aux < totalItems; aux++)
 			{
 				devolver = devolver + m.GetItemInfo(bag.BuscaItemEnPos(aux)) + "\n";
 			}
