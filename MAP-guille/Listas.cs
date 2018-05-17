@@ -101,6 +101,28 @@ namespace Listas
                        
 		}
 
+        public bool BuscaItem (int e)
+        {
+            bool encontrado = false;
+
+            if (pri == null)
+                throw new Exception("Lista vacia");
+
+            Nodo aux = pri;
+
+            int total = ItemsLista();
+
+            for (int i = 0; i < total; i++)
+            {
+                if (aux.dato == e)
+                    encontrado = true;
+                aux = aux.sig;
+            }
+
+            return encontrado;
+
+        }
+
 		public void EliminaItem(int nItem)
         {
             if (pri == null)
