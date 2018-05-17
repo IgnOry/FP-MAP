@@ -123,31 +123,37 @@ namespace Listas
 
         }
 
-		public void EliminaItem(int nItem)
+        public void EliminaItem(int nItem)
         {
-            if (pri == null || nItem < 0 || nItem >= ItemsLista() )
+            if (pri == null || nItem < 0 || nItem >= ItemsLista())
                 throw new Exception("No existe");
 
-			Nodo aux = pri;
-			int i = 0;
+            Nodo aux = pri;
 
             //si hay sólo 1 elemento
             if (aux.sig == null)
-                pri = aux.sig;
-            else
+                pri = null;
+
+            if (aux.sig != null)
             {
-                Nodo copia = aux.sig.sig;
-
-                for (i = 1; i < nItem; i++)
+                Nodo copia = aux;
+                int total = ItemsLista();
+                int i = 0;
+                while (i < total && i < nItem)
                 {
+                    copia = aux;
                     aux = aux.sig;
-                    copia = copia.sig;
+                    i++;
                 }
-                aux.sig = copia;
-            }
-		}
 
-		public void InsertaItem2(int nItem) //inserta al principio
+                if (i == nItem)
+                    copia.sig = aux.sig;
+            }
+
+        }
+
+
+        public void InsertaItem2(int nItem) //inserta al principio
 		{
 			Nodo Item = new Nodo(nItem);
 

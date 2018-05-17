@@ -81,7 +81,7 @@ namespace PracticaMap4
 
             //Assert
             Assert.AreEqual(5, cuenta, "La nueva lista tiene tamaño 5");
-            Assert.AreEqual("1:2:1:2:3", conteo, "La nueva lista es 1:2:1:2:3");
+            Assert.AreEqual("1:3:1:2:3", conteo, "La nueva lista es 1:3:1:2:3");
         }
 
         [TestMethod]
@@ -118,7 +118,7 @@ namespace PracticaMap4
             int cuenta3 = L3.BuscaItemEnPos(0);
 
             //Assert
-            Assert.AreEqual(2, cuenta3, "El primer elemento no es 1, es 2");
+            Assert.AreEqual(1, cuenta3, "El primer elemento no es 0, es 1");
         }
 
         [TestMethod]
@@ -129,7 +129,7 @@ namespace PracticaMap4
             Lista L3 = new Lista(3, 1);
 
             //Act
-            L3.EliminaItem(1);
+            L3.EliminaItem(2);
             int cuenta3 = L3.BuscaItemEnPos(1);
             string conteo = L3.Cadena();
 
@@ -949,17 +949,64 @@ namespace PracticaMap4
         public void PickItemGeneral()
         {
             //Arrange
-            Map mapa = new Map(1, 1);
+            Map mapa = new Map(1, 2);
             WallE.WallE w = new WallE.WallE();
 
             //Act
             mapa.places[0].itemsInPlace = new Lista();
             mapa.places[0].itemsInPlace.InsertaItem(0);
+            mapa.places[0].itemsInPlace.InsertaItem(1);
+            w.PickItem(mapa, 0);
+            int resultado = w.bag.ItemsLista();
+            int resultado1 = mapa.places[0].itemsInPlace.ItemsLista();
+
+
+            //Assert
+            Assert.AreEqual(1, resultado, "Hay 1 objeto en Bag");
+
+        }
+
+        [TestMethod]
+
+        public void PickItemPrimero()
+        {
+            //Arrange
+            Map mapa = new Map(1, 2);
+            WallE.WallE w = new WallE.WallE();
+
+            //Act
+            mapa.places[0].itemsInPlace = new Lista();
+            mapa.places[0].itemsInPlace.InsertaItem(0);
+            mapa.places[0].itemsInPlace.InsertaItem(1);
             w.PickItem(mapa, 0);
             int resultado = w.bag.ItemsLista();
 
             //Assert
             Assert.AreEqual(1, resultado, "Hay 1 objeto en Bag");
+
+        }
+
+        [TestMethod]
+
+        public void PickItemUltimo()
+        {
+            //Arrange
+            Map mapa = new Map(1, 2);
+            WallE.WallE w = new WallE.WallE();
+
+            //Act
+            mapa.places[0].itemsInPlace = new Lista();
+            mapa.places[0].itemsInPlace.InsertaItem(0);
+            mapa.places[0].itemsInPlace.InsertaItem(1);
+            w.PickItem(mapa, 1);
+            int resultado = w.bag.ItemsLista();
+            int resultado1 = mapa.places[0].itemsInPlace.ItemsLista();
+
+
+            //Assert
+            Assert.AreEqual(1, resultado, "Hay 1 objeto en Bag");
+            Assert.AreEqual(1, resultado1, "Hay 1 objeto en el lugar");
+
         }
 
         [TestMethod]
