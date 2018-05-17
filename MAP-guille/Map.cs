@@ -119,7 +119,9 @@ namespace WallE
 		public void CreateItem(string[] lectura)
 		{
 			items[int.Parse(lectura[1])].name = lectura[2];
-			items[int.Parse(lectura[1])].description = lectura[5];
+            for(int i = 5; i <  lectura.Length; i++)
+                items[int.Parse(lectura[1])].description += lectura[i];
+
 			places[int.Parse(lectura[4])].itemsInPlace.InsertaItem(int.Parse(lectura[1]));
 		}
 
