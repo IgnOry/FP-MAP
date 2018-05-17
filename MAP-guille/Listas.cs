@@ -125,30 +125,26 @@ namespace Listas
 
 		public void EliminaItem(int nItem)
         {
-            if (pri == null)
+            if (pri == null || nItem < 0 || nItem >= ItemsLista() )
                 throw new Exception("No existe");
 
 			Nodo aux = pri;
-			Nodo copia = aux;
 			int i = 0;
 
-			if (copia != null && nItem <= ItemsLista())
-			{
-				for (i = 0; i < nItem; i++)
-				{
-					aux = aux.sig;
-					copia = aux.sig;
-				}
-			}
-
-            if (i == 0)                                     //si es el primer item el borrado, pri se lleva al siguiente
-                pri = copia.sig;
-
-            else if (aux.sig != null)                       //si no es el último
-                aux.sig = copia.sig;
-
+            //si hay sólo 1 elemento
+            if (aux.sig == null)
+                pri = aux.sig;
             else
-                aux.sig = null;
+            {
+                Nodo copia = aux.sig.sig;
+
+                for (i = 1; i < nItem; i++)
+                {
+                    aux = aux.sig;
+                    copia = copia.sig;
+                }
+                aux.sig = copia;
+            }
 		}
 
 		public void InsertaItem2(int nItem) //inserta al principio
