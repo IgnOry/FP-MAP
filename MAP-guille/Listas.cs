@@ -54,26 +54,54 @@ namespace Listas
 			return aux;
 		}
 
-		public void InsertaItem(int e)
-		{
-			Nodo nuevo = new Nodo(e);
+		
+        public void insertaFin(int e)
+        {
+            Nodo aux = pri;
 
-			if (pri == null)
-			{
-				pri = nuevo;
-				nuevo.sig = null;
-			}
+            if (aux == null)
+                InsertaItem(e);
+            else
+            {
+                while (aux.sig != null)
+                {
+                    aux = aux.sig;
+                }
 
-			else
-			{
-				Nodo aux = buscaNodo();
+                aux.sig = new Nodo(e);
+            }
 
-				aux.sig = nuevo;
-				nuevo.sig = null;
-			}
-		}
+        }
 
-		public int ItemsLista()
+        public bool BorraElto(int e)
+        {
+            Nodo aux = pri;
+            bool borrado = false;
+
+            if (pri != null)
+            {
+                if (aux.dato == e)
+                {
+                    pri = aux.sig;
+                    borrado = true;
+                }
+                else
+                {
+                    while (aux != null && aux.sig != null && aux.sig.dato != e)
+                        aux = aux.sig;
+
+                    if (aux.sig != null && aux.sig.dato == e) 
+                    {
+                        aux.sig = aux.sig.sig;
+                        borrado = true;
+                    }
+                }
+            }
+
+            return borrado;
+        }
+
+        public int ItemsLista()
 		{
 			Nodo aux = pri;
 			int total = 0;
@@ -149,11 +177,10 @@ namespace Listas
         }
 
 
-        public void InsertaItem2(int nItem) //inserta al principio
+        public void InsertaItem(int nItem) //inserta al principio
 		{
 			Nodo Item = new Nodo(nItem);
 
-			Item.sig = pri;
 			pri = Item;
 		}
 

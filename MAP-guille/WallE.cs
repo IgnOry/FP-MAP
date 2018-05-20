@@ -32,21 +32,21 @@ namespace WallE
 
 		public void PickItem(Map m, int it) //Si existe item
 		{
-            //if (m.places[pos].itemsInPlace.BuscaItem(it))
-            //{
-                bag.InsertaItem2(it);
+            if (m.places[pos].itemsInPlace.BuscaItem(it))
+            {
                 m.PickItemPlace(pos, it);
-            //}
-            //else
-            //    throw new Exception("El objeto no está en este lugar");
+                bag.insertaFin(it);
+                
+            }
+            else
+                throw new Exception("El objeto no está en este lugar");
 		}
 
         public void DropItem(Map m, int it) //Si existe item
 		{
-            if (bag.BuscaItem(it))
+            if (bag.BorraElto(it))
             {
                 m.DropItemPlace(pos, it);
-                bag.EliminaItem(it);
             }
             else
                 throw new Exception("El objeto no está en la mochila");

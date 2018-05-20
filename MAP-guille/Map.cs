@@ -122,7 +122,7 @@ namespace WallE
             for(int i = 5; i <  lectura.Length; i++)
                 items[int.Parse(lectura[1])].description += lectura[i];
 
-			places[int.Parse(lectura[4])].itemsInPlace.InsertaItem(int.Parse(lectura[1]));
+			places[int.Parse(lectura[4])].itemsInPlace.insertaFin(int.Parse(lectura[1]));
 		}
 
 		private string ReadDescription(StreamReader f)
@@ -205,7 +205,7 @@ namespace WallE
 		{
             //try
             //{
-                places[pl].itemsInPlace.EliminaItem(it); //a este se le llama luego desde otro metodo
+                places[pl].itemsInPlace.BorraElto(it); //a este se le llama luego desde otro metodo
             //}
            // catch
             //{ throw new Exception("El objeto no está en este lugar"); }
@@ -213,7 +213,7 @@ namespace WallE
 
 		public void DropItemPlace(int pl, int it)
 		{
-			places[pl].itemsInPlace.InsertaItem(it);
+			places[pl].itemsInPlace.insertaFin(it);
 		}
 
 		public int Move(int pl, Direction dir)     

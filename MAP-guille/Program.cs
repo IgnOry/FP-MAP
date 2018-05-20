@@ -81,13 +81,13 @@ namespace WallE
 			while (!quit && !w.atSpaceShip (m))
 			{
 				string input = LeeInput();
-				//try{
+				try{
 				ProcesaInput(input, w, m);
-				//}
-				//catch (Exception e) 
-				//{
-				//	Console.WriteLine(e.Message);
-				//}
+				}
+				catch (Exception e) 
+				{
+					Console.WriteLine(e.Message);
+				}
 
 				if (input != "quit")
 					GuardaComandos(input, archivo);
