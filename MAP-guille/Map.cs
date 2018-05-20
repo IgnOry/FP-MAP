@@ -196,19 +196,19 @@ namespace WallE
 			for (int i = 0; i < total; i++)
 			{
 				it = places[pl].itemsInPlace.BuscaItemEnPos(i);
-				devolver = devolver + "\n" + it + " " + items[it].name + " " + items[it].description;
+				devolver = devolver + "\n" + it + ": " + items[it].name + " " + items[it].description;
 			}
 			return devolver;
 		}
 
 		public void PickItemPlace(int pl, int it)
 		{
-            //try
-            //{
+            try
+            {
                 places[pl].itemsInPlace.BorraElto(it); //a este se le llama luego desde otro metodo
-            //}
-           // catch
-            //{ throw new Exception("El objeto no está en este lugar"); }
+            }
+           catch
+            { throw new Exception("El objeto no está en este lugar"); }
 		}
 
 		public void DropItemPlace(int pl, int it)
