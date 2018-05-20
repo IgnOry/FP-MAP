@@ -191,13 +191,19 @@ namespace WallE
 		{
 			string devolver = "";
 			int total = places[pl].itemsInPlace.ItemsLista();
-			int it;
 
-			for (int i = 0; i < total; i++)
-			{
-				it = places[pl].itemsInPlace.BuscaItemEnPos(i);
-				devolver = devolver + "\n" + it + ": " + items[it].name + " " + items[it].description;
-			}
+            if (total == 0)
+                throw new Exception("No hay items en este lugar");
+            else
+            {
+                int it;
+
+                for (int i = 0; i < total; i++)
+                {
+                    it = places[pl].itemsInPlace.BuscaItemEnPos(i);
+                    devolver = devolver + it + ": " + items[it].name + " " + items[it].description + "\n";
+                }
+            }
 			return devolver;
 		}
 

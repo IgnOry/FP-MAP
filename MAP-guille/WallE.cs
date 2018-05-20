@@ -62,7 +62,7 @@ namespace WallE
 				devolver = devolver + m.GetItemInfo(bag.BuscaItemEnPos(aux)) + "\n";
 			}
 			if (aux == 0)
-				devolver = "Empty bag...";
+				devolver = "Mochila vacía...";
 			return devolver;
 		}
 
