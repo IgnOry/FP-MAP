@@ -196,7 +196,7 @@ namespace WallE
 			for (int i = 0; i < total; i++)
 			{
 				it = places[pl].itemsInPlace.BuscaItemEnPos(i);
-				devolver = devolver + "\n" + i + " " + items[it].name + " " + items[it].description;
+				devolver = devolver + "\n" + it + " " + items[it].name + " " + items[it].description;
 			}
 			return devolver;
 		}
