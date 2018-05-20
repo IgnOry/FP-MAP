@@ -41,11 +41,18 @@ namespace WallE
 					}
 					break;
 				case ("pick"):
-					w.PickItem(m, int.Parse(coms[1]));
-					break;
+                    try
+                    {
+                        w.PickItem(m, int.Parse(coms[1]));
+                    }
+                    catch { throw new Exception("El item " + "\"" + coms[1] + "\" no está en este lugar"); }
+                    break;
 				case ("drop"):
+                    try { 
 					w.DropItem(m, int.Parse(coms[1]));
-					break;
+                    }
+                    catch { throw new Exception("El item " + "\"" + coms[1] + "\" no está en la bolsa"); }
+                    break;
 				case ("items"):
 					Console.WriteLine(m.GetItemsPlace(w.GetPosition()));
 					break;

@@ -193,7 +193,7 @@ namespace WallE
 			int total = places[pl].itemsInPlace.ItemsLista();
 
             if (total == 0)
-                throw new Exception("No hay items en este lugar");
+                throw new Exception();
             else
             {
                 int it;
