@@ -124,7 +124,12 @@ namespace WallE
 
 			while ((comando = archivo.ReadLine()) != null)
 			{
-				ProcesaInput(comando, w, m);
+                // try-catch por si el jugador se ha confundido en algún comando
+                try
+                {
+                    ProcesaInput(comando, w, m);
+                }
+                catch { }
 			}
 			archivo.Close();
 		}

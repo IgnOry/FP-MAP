@@ -1,0 +1,7 @@
+info
+go north
+info
+go south
+items
+pick 0
+bag
